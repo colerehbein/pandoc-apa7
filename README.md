@@ -1,21 +1,31 @@
-# pandoc-apa
+# pandoc-apa7
 
-A Sublime Text build system / Visual Studio Code task runner for writing APA manuscripts with Pandoc formatted markdown
+This template is for use with Pandoc to convert Markdown into an APA 7-compliant LaTeX file. At this time, the project is focused on establishing the most basic working template with the goal of adding enhancements later. Input is appreciated.
+
+I am a Mac user so these instructions are geared towards macOS.
 
 # Installation
 
+Most of this software can also be installed in the command line using appropriate Homebrew commands.
+
+## Markdown editor
+
+Use whatever Markdown editor you like. I personally enjoy Zettlr <https://zettlr.com> because it manages citations well. However, exporting Zettlr manuscripts to Markdown involves altering a Zettlr asset to prevent the internal pandoc from rendering citations as properly formatted citations (eg. (Smith, 2022)) instead of as Markdown citations (eg. [@smith2022]). This is outside the scope of this README but please contact the author should such a workaround be desired.
+
 ## Pandoc
 
-<!--
-pandoc --print-default-data-file reference.docx > custom-reference.docx
--->
+Pandoc is needed to use the Pandoc templates. You can find it here: <https://pandoc.org/installing.html> or using the command line:
+	$ brew install --cask mactex
 
+## LaTeX
 
-You need Pandoc to use the pandoc templates. You can find it here: <https://pandoc.org/installing.html>
+You'll need a LaTeX distribution to build the APA formatted pdf files (e.g., MikTex or MacTex). This can be found here: <https://ctan.org/starter>
 
-## LaTeX / Word
+### Latex Packages
 
-You'll need a LaTeX distribution to build the APA formatted pdf files (e.g., MikTex or MacTex), or Microsoft Word to convert markdown to .docx files.
+#### BibLaTeX
+
+This is the most robust and well-supported citation package for APA7 and the only one fully supported by the LaTeX apa7 package at the time of this writing. You can install this through the Tex Live Utility gui provided 
 
 ## Filters
 
@@ -23,53 +33,7 @@ Pandoc doesn't yet support cross referencing figures and tables. You'll need a P
 
 # Usage
 
-## Sublime Text
-
-Copy the `pandoc` and `sublime` directories from this repository wherever your Packages folder is located in Sublime Text. For example, if the contents of this repository are not already in a folder called `pandoc-apa`, make a folder called `pandoc-apa` in Sublime text's User directory and copy contents there.
-
-Where to copy `pandoc` and `sublime` folders:
-
-- Windows: `C:\Users\username\AppData\Roaming\Sublime Text 3\Packages\User\pandoc-apa`
-- OSX: `/Users/username/Library/Application Support/Sublime Text 3/Packages/User/pandoc-apa`
-
-### Usage:
-
-- Press `ctrl + b` to build to pdf (or `cmd+b`)
-
-- Press `ctrl + shift + b` to build to docx (or `cmd+shift+b`)
-
-- You can also go to `Tools > Build System > Pandoc APA`, then if you select `Tools > Build Width` you can see the different options. Default is .pdf. `Markdown to LaTeX` will convert a pandoc markdown document to a .tex file. `Run` will convert to .docx.
-
-- In a document, type `apayaml`, then press Tab. It will generate a YAML header. Or you can do this from `Tools > Snippets > "Insert Pandoc ..."`
-
-## Visual Studio Code
-
-Copy the `.vscode` and `pandoc` directories to where your main markdown file is located.
-Open the folder containing your markdown file as a vscode workspace.
-Press `Ctrl+Shift+B` to run the build task or press `F1` then type `task`, select "run task", then choose one of the Pandoc APA options.
-
-Instead of copying the pandoc-apa contents for each project, you can now create a workspace with multiple root folders in vs code. Make a `.code-workspace` file where your main .md file is located with something like this, where the second path is pointing to the pandoc-apa directory:
-
-```
-{
-	"folders": [
-		{
-            "name": "this-workspace",
-			"path": "."
-		},
-		{
-            "name": "pandoc-apa",
-			"path": "../pandoc-apa"
-		}
-	],
-	"settings": {
-		"files.exclude": {
-			"example": true
-		},
-        "editor.insertSpaces": true
-	}
-}
-```
+Download the file APA7.tex and put it in your working directory or a resources/template file. 
 
 ## Pandoc YAML Metadata Block
 
@@ -114,3 +78,7 @@ These templates makes heavy use of the pandoc metadata block at the beginning of
 You can try additional fields not mentioned here:
 
 <https://pandoc.org/MANUAL.html#variables-set-by-pandoc>
+
+# Acknowledgements
+
+Thanks to David Weiss for developing the APA7 LaTeX packages and keeping them up to date.
