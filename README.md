@@ -42,7 +42,7 @@ This was original material from the first project. Not sure how it incorporates 
 ## Filters
 
 Pandoc doesn't yet support cross referencing figures and tables. You'll need a Python distribution to install two filters to be able to do this. The filters are `pandoc-fignos` and `pandoc-tablenos`. You can find links and installation instructions here <https://github.com/tomduck/pandoc-fignos>
-!>
+-->
 
 # Usage
 
